@@ -14,12 +14,12 @@ export const Menu = () => {
   console.log(Foods);
   return (
     <MenuStyled>
-      {Object.keys(Foods).map((sectionKey) => {
+      {Object.entries(Foods).map(([sectionName, foods]) => {
         return (
           <>
-            <h3>{sectionKey}</h3>
+            <h3>{sectionName}</h3>
             <FoodGrid>
-              {Foods[sectionKey].map((food) => (
+              {foods.map((food) => (
                 <Food img={food.img}>{food.name}</Food>
               ))}
             </FoodGrid>
