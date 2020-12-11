@@ -8,6 +8,7 @@ const NavbarStyled = styled.div`
   background-color: #fff;
   width: 100%;
   z-index: 999;
+  border-bottom: 1px solid #e5edef;
 `;
 
 const Logo = styled.img`
