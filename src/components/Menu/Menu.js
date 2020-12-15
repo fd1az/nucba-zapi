@@ -1,19 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Foods, formatPrice } from '../data/data';
+import { formatPrice } from '../../data/data';
 import { FoodGrid, Food, FoodLabel } from './FoodGrid';
+
+import { useSelector } from 'react-redux';
+import { TagsMenu, TagCard, TagImg } from './TagsMenu';
 
 const MenuStyled = styled.div`
   height: 1000px;
-  margin: 0px 400px 50px 20px;
+  margin: 0px 20px 50px 20px;
   z-index: 3;
 `;
 
 export const Menu = ({ setOpenFood }) => {
-  console.log(Foods);
+  const Foods = useSelector((state) => state.products.foods);
+  const categories = useSelector((state) => state.categories.categories);
+
   return (
     <MenuStyled>
+      <h2>Menu</h2>
+      <TagsMenu>
+        {categories.map((category) => (
+          <TagCard>
+            <TagImg img={category.imgTag} />
+            <p>{category.section}</p>
+          </TagCard>
+        ))}
+      </TagsMenu>
       {Object.entries(Foods).map(([sectionName, foods]) => {
         return (
           <>
