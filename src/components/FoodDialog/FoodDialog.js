@@ -4,6 +4,8 @@ import { FoodLabel } from '../Menu/FoodGrid';
 import { Title } from '../../Styles/title';
 import { nucbazapiRed } from '../../Styles/colors';
 import { formatPrice } from '../../data/data';
+import { useDispatch } from 'react-redux';
+import * as cartActions from '../../redux/cart/cart-actions';
 
 const Dialog = styled.div`
   width: 500px;
@@ -62,7 +64,7 @@ export const ConfirmButton = styled(Title)`
   }
 `;
 
-const DialogShadow = styled.div`
+export const DialogShadow = styled.div`
   position: fixed;
   height: 100%;
   width: 100%;
@@ -71,17 +73,15 @@ const DialogShadow = styled.div`
   z-index: 4;
 `;
 
-const FoodDialogContainer = ({ openFood, setOpenFood, orders, setOrders }) => {
+const FoodDialogContainer = ({ openFood, setOpenFood }) => {
+  const dispatch = useDispatch();
+
   const handlerClose = () => {
     setOpenFood();
   };
-  const order = {
-    ...openFood,
-  };
 
   const addToOrder = () => {
-    setOrders([...orders, order]);
-    handlerClose();
+    dispatch(cartActions.addItem(openFood));
   };
 
   return (

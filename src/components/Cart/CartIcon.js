@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as ShoppingIcon } from '../../assets/cart-icon.svg';
 import { nucbazapiRed } from '../../Styles/colors';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../redux/cart/cart-actions';
 
 const CartIconStyled = styled.div`
@@ -25,6 +25,12 @@ const ItemCount = styled.span`
 
 export const CartIcon = () => {
   const dispatch = useDispatch();
+  const quantity = useSelector((state) =>
+    state.cart.cartItems.reduce((acc, cartItem) => {
+      return acc + cartItem.quantity;
+    }, 0)
+  );
+
   const hadlerToggle = () => {
     dispatch(cartActions.toggleCartHidden());
   };
@@ -34,7 +40,7 @@ export const CartIcon = () => {
       <ShoppingIcon
         style={{ width: '24px', height: '24px', color: nucbazapiRed }}
       />
-      <ItemCount>{0}</ItemCount>
+      <ItemCount>{quantity}</ItemCount>
     </CartIconStyled>
   );
 };
