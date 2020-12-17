@@ -10,6 +10,7 @@ import { formatPrice } from '../../data/data';
 import { useSelector, useDispatch } from 'react-redux';
 import { QuantityManage } from './QuantityManage';
 import * as cartActions from '../../redux/cart/cart-actions';
+import { Link } from 'react-router-dom';
 
 const OrderStyled = styled.div`
   position: fixed;
@@ -70,6 +71,8 @@ export const Order = () => {
     dispatch(cartActions.toggleCartHidden());
   };
 
+  console.log(cartItems);
+
   return (
     <>
       {hidden && <DialogShadow onClick={hadlerToggle} />}
@@ -98,7 +101,9 @@ export const Order = () => {
           </OrderContent>
         )}
         <DialogFooter>
-          <ConfirmButton>Ir a pagar {formatPrice(total)}</ConfirmButton>
+          <Link to="/checkout" onClick={hadlerToggle}>
+            <ConfirmButton>Ir a pagar {formatPrice(total)}</ConfirmButton>
+          </Link>
         </DialogFooter>
       </OrderStyled>
     </>

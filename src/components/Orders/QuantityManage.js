@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title } from '../../Styles/title';
 import styled from 'styled-components';
-import { nucbazapiRed } from '../../Styles/colors';
+import { nucbazapiRed } from '../../Styles/utilities';
 import { formatPrice } from '../../data/data';
 import RemoveIcon from '../../assets/delete-full.svg';
 import * as cartActions from '../../redux/cart/cart-actions';

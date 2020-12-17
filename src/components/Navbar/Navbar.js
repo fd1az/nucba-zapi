@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import imgLogo from '../../assets/nucbazappiintegral.png';
 import { CartIcon } from '../Cart/CartIcon';
+import { fixed } from '../../Styles/utilities';
+import { Link } from 'react-router-dom';
 
 const NavbarStyled = styled.div`
   padding: 10px;
-  position: fixed;
+  ${fixed()}
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,7 +32,10 @@ const NavigationMenu = styled.div`
 export const Navbar = () => {
   return (
     <NavbarStyled>
-      <Logo src={imgLogo} />
+      <Link to="/">
+        <Logo src={imgLogo} />
+      </Link>
+
       <NavigationMenu>
         <CartIcon />
       </NavigationMenu>

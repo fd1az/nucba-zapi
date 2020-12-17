@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ShoppingIcon } from '../../assets/cart-icon.svg';
-import { nucbazapiRed } from '../../Styles/colors';
+import { nucbazapiRed } from '../../Styles/utilities';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../redux/cart/cart-actions';

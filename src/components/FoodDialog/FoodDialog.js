@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { FoodLabel } from '../Menu/FoodGrid';
 import { Title } from '../../Styles/title';
-import { nucbazapiRed } from '../../Styles/colors';
+import { nucbazapiRed } from '../../Styles/utilities';
 import { formatPrice } from '../../data/data';
 import { useDispatch } from 'react-redux';
 import * as cartActions from '../../redux/cart/cart-actions';
+import { above } from '../../Styles/utilities';
 
 const Dialog = styled.div`
   width: 500px;
@@ -38,6 +39,7 @@ export const DialogContent = styled.div`
   overflow: auto;
   min-height: 100px;
   max-height: 400px;
+  padding: 40px;
 `;
 
 export const DialogFooter = styled.div`
@@ -82,6 +84,7 @@ const FoodDialogContainer = ({ openFood, setOpenFood }) => {
 
   const addToOrder = () => {
     dispatch(cartActions.addItem(openFood));
+    handlerClose();
   };
 
   return (
@@ -92,7 +95,7 @@ const FoodDialogContainer = ({ openFood, setOpenFood }) => {
           <DialogBannerName>{openFood.name}</DialogBannerName>
         </DialogBanner>
         <DialogContent>
-          <div>algo</div>
+          <p>{openFood.description}</p>
         </DialogContent>
         <DialogFooter>
           <ConfirmButton onClick={addToOrder}>
