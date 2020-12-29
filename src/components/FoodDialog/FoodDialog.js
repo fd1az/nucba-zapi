@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FoodLabel } from '../Menu/FoodGrid';
-import { Title } from '../../Styles/title';
+import { Title } from '../UI';
 import { nucbazapiRed } from '../../Styles/utilities';
-import { formatPrice } from '../../data/data';
+import { formatPrice } from '../../utils';
 import { useDispatch } from 'react-redux';
 import * as cartActions from '../../redux/cart/cart-actions';
 import { above } from '../../Styles/utilities';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../../Styles/title';
+import { Title } from '../UI';
 import styled from 'styled-components';
 import { nucbazapiRed } from '../../Styles/utilities';
 import { formatPrice } from '../../data/data';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GlobalStyle } from './Styles/GlobalStyle';
 
 import { Navbar } from './components/Navbar/Navbar';
@@ -10,9 +10,35 @@ import { useOpenFood } from './hooks/useOpenFood';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Checkout from './pages/Checkout';
+import Login from './pages/Login';
+import { useSelector, useDispatch } from 'react-redux';
+import { auth, createUserProfileDocument } from './firebase/firebase.util';
+import * as userActions from './redux/user/user-actions';
+
+function onAuthStateChange(cb, action) {
+  auth.onAuthStateChanged(async (userAuth) => {
+    if (userAuth) {
+      const userRef = await createUserProfileDocument(userAuth);
+      console.log(userRef);
+      userRef.onSnapshot((snapShot) => {
+        cb(action({ id: snapShot.id, ...snapShot }));
+      });
+    } else {
+      cb(action(null));
+    }
+  });
+}
 
 function App() {
   const opendFood = useOpenFood();
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubcribe = onAuthStateChange(dispatch, userActions.setCurrentUser);
+    return () => {
+      unsubcribe();
+    };
+  }, [dispatch]);
 
   return (
     <Router>
@@ -23,8 +49,11 @@ function App() {
         <Route exact path="/">
           <Home opendFood={opendFood} />
         </Route>
-        <Route paht="/checkout">
+        <Route path="/checkout">
           <Checkout />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
       </Switch>
     </Router>

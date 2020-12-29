@@ -6,7 +6,7 @@ import {
   ConfirmButton,
   DialogShadow,
 } from '../FoodDialog/FoodDialog';
-import { formatPrice } from '../../data/data';
+import { formatPrice } from '../../utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { QuantityManage } from './QuantityManage';
 import * as cartActions from '../../redux/cart/cart-actions';
