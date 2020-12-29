@@ -5,6 +5,7 @@ import userIcon from '../../assets/user.svg';
 import { CartIcon } from '../Cart/CartIcon';
 import { fixed } from '../../Styles/utilities';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.util';
 
 const NavbarStyled = styled.div`
   padding: 10px;
@@ -70,7 +71,7 @@ export const Navbar = () => {
           <LoginButton>Ingresar</LoginButton>
         </Link>
 
-        <User src={userIcon} />
+        <User src={userIcon} onClick={() => auth.signOut()} />
       </NavigationMenu>
     </NavbarStyled>
   );

@@ -2,7 +2,7 @@ export const foodItems = [
   {
     id: 1,
     name: 'Pizza Tranca',
-    img: 'img/pizza1.jpg',
+    img: '/img/pizza1.jpg',
     section: 'Pizzas',
     description:
       'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
@@ -11,7 +11,7 @@ export const foodItems = [
   {
     id: 2,
     name: 'Pizza Mix',
-    img: 'img/pizza2.jpg',
+    img: '/img/pizza2.jpg',
     section: 'Pizzas',
     description:
       'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
@@ -20,7 +20,7 @@ export const foodItems = [
   {
     id: 3,
     name: 'Pizza Mix',
-    img: 'img/pizza2.jpg',
+    img: '/img/pizza2.jpg',
     section: 'Pizzas',
     description:
       'Pizza casera a la piedra, muzzarella, jamón, morrón asado, huevo.',
@@ -29,7 +29,7 @@ export const foodItems = [
   {
     id: 4,
     name: 'Burger Zarpada',
-    img: 'img/burger1.jpg',
+    img: '/img/burger1.jpg',
     section: 'Burgers',
     description:
       'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
@@ -38,7 +38,7 @@ export const foodItems = [
   {
     id: 5,
     name: 'Burger en la pera',
-    img: 'img/burger2.jpg',
+    img: '/img/burger2.jpg',
     section: 'Burgers',
     description:
       'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
@@ -47,7 +47,7 @@ export const foodItems = [
   {
     id: 6,
     name: 'Burger Zarpada',
-    img: 'img/burger1.jpg',
+    img: '/img/burger1.jpg',
     section: 'Burgers',
     description:
       'Hamburguesa de asado de 180g, mostaza dulce, cebolla caramelizada, cheddar, aros de cebolla, papas fritas.',
@@ -56,7 +56,7 @@ export const foodItems = [
   {
     id: 7,
     name: 'Sambuchito 1',
-    img: 'img/sanbu1.jpg',
+    img: '/img/sanbu1.jpg',
     section: 'Sambuchitos',
     description:
       'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
@@ -65,7 +65,7 @@ export const foodItems = [
   {
     id: 8,
     name: 'Sambuchito 2',
-    img: 'img/sanbu2.jpg',
+    img: '/img/sanbu2.jpg',
     section: 'Sambuchitos',
     description:
       'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
@@ -74,7 +74,7 @@ export const foodItems = [
   {
     id: 9,
     name: 'Sambuchito 1',
-    img: 'img/sanbu1.jpg',
+    img: '/img/sanbu1.jpg',
     section: 'Sambuchitos',
     description:
       'Sándwich de milanesa carne o pollo lechuga, tomate, jamón, queso, huevo frito; con papas fritas.',
