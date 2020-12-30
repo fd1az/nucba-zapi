@@ -6,6 +6,9 @@ import { CartIcon } from '../Cart/CartIcon';
 import { fixed } from '../../Styles/utilities';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.util';
+import { useSelector, useDispatch } from 'react-redux';
+import { UserMenu } from '../UserMenu/UserMenus';
+import * as userActions from '../../redux/user/user-actions';
 
 const NavbarStyled = styled.div`
   padding: 10px;
@@ -58,6 +61,13 @@ const NavigationMenu = styled.div`
 `;
 
 export const Navbar = () => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(userActions.toggleMenuHidden());
+  };
+
   return (
     <NavbarStyled>
       <Link to="/">
@@ -67,11 +77,16 @@ export const Navbar = () => {
       <NavigationMenu>
         <CartIcon />
         <Divider />
-        <Link to="/login">
-          <LoginButton>Ingresar</LoginButton>
-        </Link>
-
-        <User src={userIcon} onClick={() => auth.signOut()} />
+        {currentUser ? (
+          <>
+            <User src={userIcon} onClick={handleToggle} />
+            <UserMenu user={currentUser} />
+          </>
+        ) : (
+          <Link to="/login">
+            <LoginButton>Ingresar</LoginButton>
+          </Link>
+        )}
       </NavigationMenu>
     </NavbarStyled>
   );

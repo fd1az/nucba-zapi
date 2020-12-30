@@ -4,3 +4,6 @@ export const formatPrice = (price) => {
     currency: 'ARS',
   }).format(price);
 };
+
+export const formatDate = (date) =>
+  new Intl.DateTimeFormat('es-AR').format(date);
