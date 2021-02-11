@@ -14,7 +14,7 @@ const Orders = () => {
   const dispatch = useDispatch();
 
   const fetchOrders = useCallback(async () => {
-    await dispatch(orderActions.fetchOrders(currentUser.id));
+    await dispatch(orderActions.fetchOrders(currentUser?.id));
   }, [dispatch, currentUser]);
 
   if (!currentUser) {
