@@ -1,4 +1,5 @@
 import React from 'react';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { Title } from '../UI';
 import styled from 'styled-components';
 import { nucbazapiRed } from '../../Styles/utilities';
@@ -40,11 +41,12 @@ const QuantityButton = styled.div`
   }
 `;
 
-const RemoveIconStyled = styled.img`
-  width: 23px;
-  height: auto;
-  padding: 10px;
+const RemoveIconStyled = styled(DeleteIcon)`
+  width: 17px !important;
+  height: 17px !important;
   cursor: pointer;
+  margin: 0 10px;
+  color: red;
 `;
 
 export const QuantityManage = ({ item }) => {
