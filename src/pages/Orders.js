@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
-import { MyOrders } from '../components/MyOrders/MyOrders';
-
-import { Wrapper, LayoutPage } from '../components/UI';
-
-import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { MyOrders } from '../components/MyOrders/MyOrders';
 import * as orderActions from '../redux/orders/order.actions';
+
+import { CheckoutContainerStyled } from './OrdersElements';
+
+import CheckoutBackground from '../assets/checkout.jpg';
 
 const Orders = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -25,11 +27,9 @@ const Orders = () => {
   }, [fetchOrders]);
 
   return (
-    <LayoutPage>
-      <Wrapper>
-        <MyOrders orders={orders} />
-      </Wrapper>
-    </LayoutPage>
+    <CheckoutContainerStyled img={CheckoutBackground}>
+      <MyOrders orders={orders} />
+    </CheckoutContainerStyled>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Input, FormStyled, FormContent } from '../UI';
+import { Input } from '../UI';
 import useForm from '../../hooks/useForm';
 import { VALIDATOR_REQUIRE } from '../../utils';
 import { CardSummary } from '../CardSummary/CardSummary';
@@ -8,6 +8,12 @@ import { useHistory } from 'react-router-dom';
 import { Spinner } from '../UI/Spinner';
 import * as orderActions from '../../redux/orders/order.actions';
 import * as cartActions from '../../redux/cart/cart-actions';
+
+import {
+  FormStyled,
+  FormSectionStyled,
+  FormTitle,
+} from './CheckoutFormElements';
 
 export const CheckoutForm = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -32,6 +38,7 @@ export const CheckoutForm = () => {
     },
     false
   );
+
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (!formState.isValid) {
@@ -61,34 +68,39 @@ export const CheckoutForm = () => {
   }
 
   return (
-    <form onSubmit={handlerSubmit}>
-      <FormStyled>
-        <FormContent>
-          <Input
-            id="domicilio"
-            label="Domicilio"
-            type="text"
-            onInput={inputHandler}
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText="Campo Obligatorio"
-          />
+    <FormStyled onSubmit={handlerSubmit}>
+      <FormSectionStyled>
+        {!formState.isValid && (
+          <FormTitle>
+            Por favor, completá los datos para poder continuar
+          </FormTitle>
+        )}
+        <Input
+          id="domicilio"
+          label="Domicilio"
+          type="text"
+          onInput={inputHandler}
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Campo Obligatorio"
+        />
 
-          <Input
-            id="localidad"
-            label="Localidad"
-            type="text"
-            onInput={inputHandler}
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText="Campo Obligatorio"
-          />
-        </FormContent>
-      </FormStyled>
-      <CardSummary
-        isValid={!formState.isValid}
-        subTotal={subTotal}
-        envio={CONSTO_ENVIO}
-      />
-      {loading && <Spinner />}
-    </form>
+        <Input
+          id="localidad"
+          label="Localidad"
+          type="text"
+          onInput={inputHandler}
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Campo Obligatorio"
+        />
+      </FormSectionStyled>
+
+      {formState.isValid && (
+        <CardSummary
+          isValid={!formState.isValid}
+          subTotal={subTotal}
+          envio={CONSTO_ENVIO}
+        />
+      )}
+    </FormStyled>
   );
 };

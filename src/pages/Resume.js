@@ -1,14 +1,15 @@
 import React from 'react';
 import { OrderResume } from '../components/MyOrders/OrderResume';
-import { Wrapper, LayoutPage } from '../components/UI';
+
+import { CheckoutContainerStyled } from './CheckoutElements';
+
+import CheckoutBackground from '../assets/checkout.jpg';
 
 const Resume = () => {
   return (
-    <LayoutPage>
-      <Wrapper>
-        <OrderResume />
-      </Wrapper>
-    </LayoutPage>
+    <CheckoutContainerStyled img={CheckoutBackground}>
+      <OrderResume />
+    </CheckoutContainerStyled>
   );
 };
 

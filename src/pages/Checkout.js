@@ -1,9 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Wrapper, LayoutPage } from '../components/UI';
 import { CheckoutForm } from '../components/CheckoutForm/CheckoutForm';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+import {
+  CheckoutContainerStyled,
+  CheckoutIllustration,
+  CheckoutImage,
+  CheckoutGridContainer,
+} from './CheckoutElements';
+
+import CheckoutBackground from '../assets/checkout.jpg';
+import CheckoutIllustrationSource from '../assets/checkoutIllustration.png';
 
 const Checkout = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -14,11 +22,14 @@ const Checkout = () => {
   }
 
   return (
-    <LayoutPage>
-      <Wrapper>
+    <CheckoutContainerStyled img={CheckoutBackground}>
+      <CheckoutGridContainer>
+        <CheckoutIllustration>
+          <CheckoutImage src={CheckoutIllustrationSource} />
+        </CheckoutIllustration>
         <CheckoutForm />
-      </Wrapper>
-    </LayoutPage>
+      </CheckoutGridContainer>
+    </CheckoutContainerStyled>
   );
 };
 

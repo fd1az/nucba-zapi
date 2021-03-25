@@ -1,34 +1,27 @@
-import {
-  colorCanceled,
-  colorPending,
-  colorSucces,
-  bgCanceled,
-  bgPending,
-  bgSucces,
-} from './Colors';
+import { theme } from './Colors';
 import { css } from 'styled-components';
 
 export const status = (type) => {
   switch (type) {
     case 'success':
       return css`
-        color: ${colorSucces};
-        background-color: ${bgSucces};
+        color: ${theme.success};
+        background-color: ${theme.bgSuccess};
       `;
     case 'pending':
       return css`
-        color: ${colorPending};
-        background-color: ${bgPending};
+        color: ${theme.pending};
+        background-color: ${theme.bgPending};
       `;
     case 'cancelled':
       return css`
-        color: ${colorCanceled};
-        background-color: ${bgCanceled};
+        color: ${theme.canceled};
+        background-color: ${theme.bgCanceled};
       `;
     default:
       return css`
-        color: ${colorPending};
-        background-color: ${bgPending};
+        color: ${theme.pending};
+        background-color: ${theme.bgPending};
       `;
   }
 };

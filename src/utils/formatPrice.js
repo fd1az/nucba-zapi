@@ -5,5 +5,10 @@ export const formatPrice = (price) => {
   }).format(price);
 };
 
-export const formatDate = (date) =>
-  new Intl.DateTimeFormat('es-AR').format(date);
+export const formatDate = (seconds) => {
+  const fecha = new Date(seconds * 1000);
+  const mes = fecha.getMonth();
+  const dia = fecha.getDate();
+  const year = fecha.getFullYear();
+  return `${dia}/${mes}/${year}`;
+};

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import {
   Wrapper,
   LayoutPage,
@@ -8,8 +7,6 @@ import {
   FormStyled,
   CustomButton,
 } from '../components/UI';
-
-import { nucbazapiRed } from '../Styles/utilities';
 
 import useForm from '../hooks/useForm';
 import {
@@ -26,32 +23,12 @@ import {
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-const ContainerButtons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-`;
-
-const GoogleButton = styled(CustomButton)`
-  display: flex;
-  justify-content: space-between;
-  background-image: linear-gradient(130deg, #ff9259 0%, #ff2426 70%);
-`;
-
-const GoogleIcon = styled.img`
-  width: 15px;
-  height: 15px;
-  cursor: pointer;
-`;
-
-const Alink = styled.a`
-  color: ${nucbazapiRed};
-  margin-left: 5px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+import {
+  ContainerButtons,
+  GoogleButton,
+  GoogleIcon,
+  Alink,
+} from './LoginElements';
 
 const Login = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -104,6 +81,7 @@ const Login = () => {
     }
     setIsLoginMode((prevMode) => !prevMode);
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (isLoginMode) {
@@ -130,7 +108,7 @@ const Login = () => {
       }
     }
   };
-  console.log(formState.inputs);
+
   return (
     <LayoutPage>
       <Wrapper>

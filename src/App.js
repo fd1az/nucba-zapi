@@ -14,10 +14,12 @@ import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Resume from './pages/Resume';
 import Orders from './pages/Orders';
+import { ThemeProvider } from 'styled-components';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import * as userActions from './redux/user/user-actions';
+import { theme } from './Styles/utilities';
 
 function onAuthStateChange(cb, action) {
   auth.onAuthStateChanged(async (userAuth) => {
@@ -46,27 +48,29 @@ function App() {
 
   return (
     <Router>
-      <GlobalStyle />
-      <Navbar />
-      <Order />
-      <Switch>
-        <Route exact path="/">
-          <Home opendFood={opendFood} />
-        </Route>
-        <Route path="/checkout">
-          <Checkout />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Navbar />
+        <Order />
+        <Switch>
+          <Route exact path="/">
+            <Home opendFood={opendFood} />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
 
-        <Route exact path="/mis-ordenes">
-          <Orders />
-        </Route>
-        <Route exact path={`/mis-ordenes/:orderId`}>
-          <Resume />
-        </Route>
-      </Switch>
+          <Route exact path="/mis-ordenes">
+            <Orders />
+          </Route>
+          <Route exact path={`/mis-ordenes/:orderId`}>
+            <Resume />
+          </Route>
+        </Switch>
+      </ThemeProvider>
     </Router>
   );
 }

@@ -20,8 +20,6 @@ const InputContainer = styled.div`
   font-size: 16px;
   color: #7d7d7d;
   padding: 4px 0;
-  margin: 0 16px;
-  min-width: 264px;
   box-shadow: 0 6px 10px 0 rgba(128, 98, 96, 0.16);
   &:focus {
     background-color: #ffffff;
@@ -59,7 +57,6 @@ const StyledIpunt = styled.input`
 const StyledLabel = styled.div`
   font-weight: bold;
   padding: 4px 0;
-  margin: 0 16px;
   margin-bottom: 0.5rem;
   ${({ showError }) => (showError ? `color: red;` : null)}
 `;
@@ -116,9 +113,10 @@ export const Input = (props) => {
       type: TOUCHE,
     });
   };
-  console.log('TOUCHE', inputState.isTouche);
+
+  /* console.log('TOUCHE', inputState.isTouche);
   console.log('Valid', inputState.isValid);
-  console.log('FINAL', !inputState.isValid && inputState.isTouche);
+  console.log('FINAL', !inputState.isValid && inputState.isTouche); */
 
   return (
     <FromControl>

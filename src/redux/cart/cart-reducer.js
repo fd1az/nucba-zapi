@@ -6,7 +6,7 @@ import {
 } from './cart-actions';
 import { addItemToCart, removeItemsToCart } from './cart-utils';
 const INITIAL_STATE = {
-  hidden: true,
+  hidden: false,
   cartItems: [],
 };
 
