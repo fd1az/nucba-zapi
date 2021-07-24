@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useCategories } from '../../hooks/useCategories';
 
 import { formatPrice } from '../../utils';
 
@@ -21,6 +22,9 @@ import {
 // import imgTodos from '../../assets/nucbazappiintegral.png';
 
 export const Menu = ({ setOpenFood }) => {
+  //TODO: UTILIZAR LA RESPUESTA DE useCategories!!!
+  const cates = useCategories();
+  console.log(cates);
   const [section, setSection] = useState(null);
   let Foods = useSelector((state) => state.products.foods);
   const categories = useSelector(
@@ -30,7 +34,9 @@ export const Menu = ({ setOpenFood }) => {
   if (section) {
     Foods = { [section]: Foods[section] };
   }
-
+  /**
+   * Tener en cuenta que utilizamos el selector para traer info de categorias y productos, pero eso ahora es estado del servidor, se debe eliminar todo lo que este relacionado a estos items del store! y manejar todo con react-query
+   */
   return (
     <MenuStyled>
       <ContainerMenu>
